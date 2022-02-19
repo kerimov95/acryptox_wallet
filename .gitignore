@@ -1,0 +1,9 @@
+**/.env
+**/node_modules
+**/.DS_Store
+/btc/node/**
+!/btc/node/bitcoin.conf
+/btc/test_node/**
+!/btc/test_node/bitcoin.conf
+/eth/**
+**/package-lock.json

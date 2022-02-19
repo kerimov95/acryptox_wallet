@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+
+  server:
+    build: ./server
+    env_file:
+      - ./server/.env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    command: npm run dev
+    depends_on:
+      - btc
+      - eth
+    networks:
+      - main-network
+
+  btc:
+    build: ./btc
+    volumes:
+      - "./btc/test_node:/root/.bitcoin/"
+    networks:
+      - main-network
+
+  eth:
+    image: ethereum/client-go
+    volumes:
+      - ./eth/test_node:/.ethereum
+    command: --datadir /.ethereum --http --http.api personal,eth,web3 --http.addr 0.0.0.0 --http.vhosts="*" --dev
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    driver: bridge
+    
+volumes:
+  node_modules:
