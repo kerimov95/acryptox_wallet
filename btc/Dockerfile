@@ -8,7 +8,7 @@ RUN useradd -r bitcoin \
 
 WORKDIR /bitcoin
 
-COPY bitcoin-22.0-x86_64-linux-gnu.tar.gz ./
+COPY . .
 
 RUN tar -zxf bitcoin-22.0-x86_64-linux-gnu.tar.gz
 RUN install -m 0755 -o root -g root -t /usr/local/bin bitcoin-22.0/bin/*

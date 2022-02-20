@@ -1,0 +1,4 @@
+node/**
+test_node/**
+!node/bitcoin.conf
+!test_node/bitcoin.conf
